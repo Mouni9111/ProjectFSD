@@ -69,17 +69,8 @@ public class Filehandling {
 				}
 				break;
 				case 2:
-					System.out.println("What would you like to delete?\n 1.File\n 2.Folder");
-					i=scan.nextInt();
-					scan.nextLine();
-					boolean del=false;
-					if(i>2 || i<1)
-					{
-						System.out.println("Invalid Input. Please try again.\n");
-					}
-					else if(i==1)
-					{
-						System.out.println("Please input the name of the File\n");
+						boolean del;
+						System.out.println("Please input the name of the File or Folder to delete\n");
 						String nam=scan.nextLine();
 						File f=new File("D:\\Eclipse Project\\File_Handling_Project\\"+nam);
 						del=f.delete();
@@ -90,25 +81,8 @@ public class Filehandling {
 						}
 						else
 						{
-						System.out.println("File Deleted Successfully");
+						System.out.println("File/Folder Deleted Successfully");
 						}
-					}
-					else
-					{
-						System.out.println("Please input the name of the Folder\n");
-						String namf=scan.nextLine();
-						File f=new File("D:\\Eclipse Project\\File_Handling_Project\\"+namf);
-						del=f.delete();
-						if(del==false)
-						{
-							System.out.println("Folder Not Found\n");
-							del=false;
-						}
-						else
-						{
-						System.out.println("Folder Deleted Successfully\n");
-						}
-					}
 					break;
 				case 3:
 					System.out.println("Please input the name of the File or Folder to Search\n");
