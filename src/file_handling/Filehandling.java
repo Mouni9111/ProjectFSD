@@ -53,7 +53,7 @@ public class Filehandling {
 					File f=new File("D:\\Eclipse Project\\File_Handling_Project\\"+nam);
 					try {
 						f.createNewFile();
-						System.out.println("File Created Successfully\n");
+						System.out.println("File Created Successfully with name: "+nam+"\n");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -65,30 +65,47 @@ public class Filehandling {
 					String namf=scan.nextLine();
 					File f=new File("D:\\Eclipse Project\\File_Handling_Project\\"+namf);
 					f.mkdirs();
-					System.out.println("File Created Successfully\n");
+					System.out.println("Folder Created Successfully with name: "+namf+"\n");
 				}
 				break;
 				case 2:
 						boolean del;
+						String file="";
 						System.out.println("Please input the name of the File or Folder to delete\n");
 						String nam=scan.nextLine();
 						File f=new File("D:\\Eclipse Project\\File_Handling_Project\\"+nam);
-						del=f.delete();
-						if(del==false)
+						if(f.isFile())
 						{
-							System.out.println("File Not Found\n");
-							del=false;
+							file="File";
+						}
+						else if(f.isDirectory())
+						{
+							file="Folder";
+						}
+						if(file!="")
+						{
+							del=f.delete();
+							if(del==false)
+							{
+								System.out.println(file+" "+nam+" Could Not Be Deleted\n");
+								del=false;
+							}
+							else
+							{
+							System.out.println(file+" "+nam+" Deleted Successfully\n");
+							}
 						}
 						else
 						{
-						System.out.println("File/Folder Deleted Successfully");
+							System.out.println("File/Folder Not Found\n");
 						}
+						
 					break;
 				case 3:
 					System.out.println("Please input the name of the File or Folder to Search\n");
-					String nam=scan.nextLine();
-					File f=new File("D:\\Eclipse Project\\File_Handling_Project");
-					File array[]=f.listFiles();
+					nam=scan.nextLine();
+					File f2=new File("D:\\Eclipse Project\\File_Handling_Project");
+					File array[]=f2.listFiles();
 					int count=0;
 					System.out.println("Searched Result:\n\n");
 					for(int g=0;g<array.length;g++)
